@@ -1,6 +1,8 @@
+#![windows_subsystem = "windows"]
 use chrono::{DateTime, Utc};
 use dircpy::*;
 use directories::UserDirs;
+use eframe::egui;
 use std::fs;
 use std::io;
 use std::path::Path;
@@ -35,6 +37,24 @@ fn sweep_desktop() -> std::io::Result<()> {
     Ok(())
 }
 
-fn main() -> std::io::Result<()> {
-    sweep_desktop()
+fn main() -> Result<(), eframe::Error> {
+    let options = eframe::NativeOptions {
+        viewport: egui::ViewportBuilder::default().with_inner_size([200.0, 50.0]),
+        ..Default::default()
+    };
+
+    eframe::run_simple_native("Desk Sweep", options, move |ctx, _frame| {
+        egui::CentralPanel::default().show(ctx, |ui| {
+            let style = egui::Style {
+                visuals: egui::Visuals::dark(),
+                ..egui::Style::default()
+            };
+            ctx.set_style(style);
+            ui.centered_and_justified(|ui| {
+                if ui.button("Sweep").clicked() {
+                    let _sweep_desktop = sweep_desktop();
+                }
+            })
+        });
+    })
 }
