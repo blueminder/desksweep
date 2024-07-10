@@ -5,4 +5,4 @@
 
 Automatically clean and sort Desktop items with a single click. It takes all of your loose icons and places them in a folder corresponding with the month or day the operation was run. A fresh start for you.
 
-A cross-platform clone of Median Tech's [Clean for Mac OS](https://apps.apple.com/us/app/clean/id418412301?mt=12) written in Rust & [egui](https://github.com/emilk/egui).
+A cross-platform clone of Median Tech's [Clean for Mac OS](https://apps.apple.com/us/app/clean/id418412301?mt=12) written in Rust & [egui](https://github.com/emilk/egui). Supports Windows, Linux, and Mac OS.
